@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>RandomDog</name>
+    </assembly>
+    <members>
+        <member name="T:RandomDog.Dog">
+            <summary>
+            DOG!
+            </summary>
+        </member>
+        <member name="P:RandomDog.Dog.Message">
+            <summary>
+            Doggy Image
+            </summary>
+        </member>
+        <member name="P:RandomDog.Dog.Status">
+            <summary>
+            The status of dog
+            </summary>
+        </member>
+        <member name="M:RandomDog.Dog.Fetch">
+            <summary>
+            Get Dog
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
