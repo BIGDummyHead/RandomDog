@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\shawn\\source\\repos\\RandomDog\\RandomDog\\RandomDog.csproj": {}
+    "C:\\Users\\shawn\\Documents\\GitHub\\RandomDog\\RandomDog\\RandomDog\\RandomDog.csproj": {}
   },
   "projects": {
-    "C:\\Users\\shawn\\source\\repos\\RandomDog\\RandomDog\\RandomDog.csproj": {
+    "C:\\Users\\shawn\\Documents\\GitHub\\RandomDog\\RandomDog\\RandomDog\\RandomDog.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\shawn\\source\\repos\\RandomDog\\RandomDog\\RandomDog.csproj",
+        "projectUniqueName": "C:\\Users\\shawn\\Documents\\GitHub\\RandomDog\\RandomDog\\RandomDog\\RandomDog.csproj",
         "projectName": "RandomDog",
-        "projectPath": "C:\\Users\\shawn\\source\\repos\\RandomDog\\RandomDog\\RandomDog.csproj",
+        "projectPath": "C:\\Users\\shawn\\Documents\\GitHub\\RandomDog\\RandomDog\\RandomDog\\RandomDog.csproj",
         "packagesPath": "C:\\Users\\shawn\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\shawn\\source\\repos\\RandomDog\\RandomDog\\obj\\",
+        "outputPath": "C:\\Users\\shawn\\Documents\\GitHub\\RandomDog\\RandomDog\\RandomDog\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "i/rjYYTYzF/iA325BRoKnWUNiT/jUBBxj7b02AccSDJk1vfw7PzZ1+HiEXM95a/VqXjlC1h7abPzeB7ouQ9Okg==",
+  "dgSpecHash": "Av4tu0rFvXHZNNgQq7T11FJ5JYiU66hlsogbQFzq5x0ZuRI9s3kvkOLcDdR8tpX6amXrkiWnzUfzRlrBG+ioiw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\shawn\\source\\repos\\RandomDog\\RandomDog\\RandomDog.csproj",
+  "projectFilePath": "C:\\Users\\shawn\\Documents\\GitHub\\RandomDog\\RandomDog\\RandomDog\\RandomDog.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\shawn\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
   ],

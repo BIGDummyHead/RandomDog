@@ -7,3 +7,12 @@ C:\Users\shawn\source\repos\RandomDog\RandomDog\obj\Debug\netcoreapp3.1\RandomDo
 C:\Users\shawn\source\repos\RandomDog\RandomDog\obj\Debug\netcoreapp3.1\RandomDog.csproj.CoreCompileInputs.cache
 C:\Users\shawn\source\repos\RandomDog\RandomDog\obj\Debug\netcoreapp3.1\RandomDog.dll
 C:\Users\shawn\source\repos\RandomDog\RandomDog\obj\Debug\netcoreapp3.1\RandomDog.pdb
+C:\Users\shawn\Documents\GitHub\RandomDog\RandomDog\RandomDog\bin\Debug\netcoreapp3.1\RandomDog.deps.json
+C:\Users\shawn\Documents\GitHub\RandomDog\RandomDog\RandomDog\bin\Debug\netcoreapp3.1\RandomDog.dll
+C:\Users\shawn\Documents\GitHub\RandomDog\RandomDog\RandomDog\bin\Debug\netcoreapp3.1\RandomDog.pdb
+C:\Users\shawn\Documents\GitHub\RandomDog\RandomDog\RandomDog\obj\Debug\netcoreapp3.1\RandomDog.csprojAssemblyReference.cache
+C:\Users\shawn\Documents\GitHub\RandomDog\RandomDog\RandomDog\obj\Debug\netcoreapp3.1\RandomDog.AssemblyInfoInputs.cache
+C:\Users\shawn\Documents\GitHub\RandomDog\RandomDog\RandomDog\obj\Debug\netcoreapp3.1\RandomDog.AssemblyInfo.cs
+C:\Users\shawn\Documents\GitHub\RandomDog\RandomDog\RandomDog\obj\Debug\netcoreapp3.1\RandomDog.csproj.CoreCompileInputs.cache
+C:\Users\shawn\Documents\GitHub\RandomDog\RandomDog\RandomDog\obj\Debug\netcoreapp3.1\RandomDog.dll
+C:\Users\shawn\Documents\GitHub\RandomDog\RandomDog\RandomDog\obj\Debug\netcoreapp3.1\RandomDog.pdb
