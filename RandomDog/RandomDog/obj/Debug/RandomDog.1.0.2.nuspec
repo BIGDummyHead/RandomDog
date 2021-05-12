@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>RandomDog</id>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <authors>BIGDummyHead</authors>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <license type="file">mitLicense.txt</license>
@@ -17,7 +17,6 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="C:\Users\shawn\Documents\GitHub\RandomDog\RandomDog\RandomDog\bin\Debug\netcoreapp3.1\RandomDog.runtimeconfig.json" target="lib\netcoreapp3.1\RandomDog.runtimeconfig.json" />
     <file src="C:\Users\shawn\Documents\GitHub\RandomDog\RandomDog\RandomDog\bin\Debug\netcoreapp3.1\RandomDog.dll" target="lib\netcoreapp3.1\RandomDog.dll" />
     <file src="C:\Users\shawn\source\mitLicense.txt" target="mitLicense.txt" />
   </files>
