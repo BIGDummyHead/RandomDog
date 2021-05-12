@@ -19,7 +19,7 @@
             The status of dog
             </summary>
         </member>
-        <member name="M:RandomDog.Dog.Fetch">
+        <member name="M:RandomDog.Dog.Fetch(System.String,System.String)">
             <summary>
             Get Dog
             </summary>
