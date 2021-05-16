@@ -14,7 +14,7 @@ DogInfo requestAll = await DogInfo.Request();
 
 foreach (string mainBreeds in requestAll.Doggies)
 {
-     /Prints a main breed of a dog. Bulldog
+     //Prints a main breed of a dog. Bulldog
      Console.WriteLine(mainBreeds);
 
      foreach (string subBreed in requestAll.Doggies[mainBreeds])
