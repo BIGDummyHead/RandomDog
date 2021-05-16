@@ -9,12 +9,13 @@
     <PackageLicenseFile>mitLicense.txt</PackageLicenseFile>
     <Authors>BIGDummyHead</Authors>
     <RepositoryUrl>https://github.com/BIGDummyHead/RandomDog</RepositoryUrl>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
     <OutputType>Library</OutputType>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile></DocumentationFile>
+    <DocumentationFile>C:\Users\shawn\Documents\GitHub\RandomDog\RandomDog\RandomDog\RandomDog.xml</DocumentationFile>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <ItemGroup>

@@ -16,3 +16,4 @@ C:\Users\shawn\Documents\GitHub\RandomDog\RandomDog\RandomDog\obj\Debug\netcorea
 C:\Users\shawn\Documents\GitHub\RandomDog\RandomDog\RandomDog\obj\Debug\netcoreapp3.1\RandomDog.csproj.CoreCompileInputs.cache
 C:\Users\shawn\Documents\GitHub\RandomDog\RandomDog\RandomDog\obj\Debug\netcoreapp3.1\RandomDog.dll
 C:\Users\shawn\Documents\GitHub\RandomDog\RandomDog\RandomDog\obj\Debug\netcoreapp3.1\RandomDog.pdb
+C:\Users\shawn\Documents\GitHub\RandomDog\RandomDog\RandomDog\bin\Debug\netcoreapp3.1\RandomDog.xml
