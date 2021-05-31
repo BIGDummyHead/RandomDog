@@ -258,7 +258,7 @@ namespace RandomDog
         /// <returns></returns>
         public string[] GetByName(string name, out bool error)
         {
-            bool a = Enum.TryParse(name, out DogBreeds res);
+            bool a = Enum.TryParse(name, true, out DogBreeds res);
 
             error = !a;
 
