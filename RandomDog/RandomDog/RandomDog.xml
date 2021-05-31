@@ -187,6 +187,20 @@
             All dogs in the form of a <see cref="T:System.String"/>[]
             </summary>
         </member>
+        <member name="P:RandomDog.AllDog.Item(RandomDog.DogBreeds)">
+            <summary>
+            Get an array of dogs sub-breeds via <see cref="T:RandomDog.DogBreeds"/>
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RandomDog.AllDog.GetByName(System.String)">
+            <summary>
+            Get a sub-breed of dogs by their name.
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
         <member name="T:RandomDog.EnumerableDogAPI">
             <summary>
             Represents the base dog api that has an <see cref="T:System.Collections.Generic.IEnumerable`1"/> message
