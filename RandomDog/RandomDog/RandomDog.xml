@@ -194,7 +194,7 @@
             <param name="index"></param>
             <returns></returns>
         </member>
-        <member name="M:RandomDog.AllDog.GetByName(System.String)">
+        <member name="M:RandomDog.AllDog.GetByName(System.String,System.Boolean@)">
             <summary>
             Get a sub-breed of dogs by their name.
             </summary>
