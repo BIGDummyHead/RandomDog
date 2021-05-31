@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v3.1": {
-      "RandomDog/1.0.3": {
+      "RandomDog/1.1.0.0": {
         "dependencies": {
           "Newtonsoft.Json": "13.0.1"
         },
@@ -25,7 +25,7 @@
     }
   },
   "libraries": {
-    "RandomDog/1.0.3": {
+    "RandomDog/1.1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

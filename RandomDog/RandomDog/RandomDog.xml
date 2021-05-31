@@ -4,80 +4,134 @@
         <name>RandomDog</name>
     </assembly>
     <members>
+        <member name="M:RandomDog.ApiRequester.RequestAPIAsync(System.String,RandomDog.ApiRequester.RequestType)">
+            <summary>
+            Runs asnyc
+            </summary>
+            <param name="absoluteURL"></param>
+            <param name="req"></param>
+            <returns></returns>
+        </member>
+        <member name="T:RandomDog.BadRequest">
+            <summary>
+            Represents something that could have a bad request
+            </summary>
+        </member>
+        <member name="P:RandomDog.BadRequest.Status">
+            <summary>
+            The status of the request
+            </summary>
+        </member>
+        <member name="P:RandomDog.BadRequest.Code">
+            <summary>
+            The status of code of the request.
+            <para>200 == 0</para>
+            </summary>
+        </member>
+        <member name="P:RandomDog.BadRequest.HasError">
+            <summary>
+            Returns | Code != 200
+            </summary>
+        </member>
         <member name="T:RandomDog.Dog">
             <summary>
-            DOG!
+            A single dog that has been requested.
             </summary>
         </member>
-        <member name="P:RandomDog.Dog.Message">
+        <member name="M:RandomDog.Dog.FetchAsync(System.String,System.String)">
             <summary>
-            Doggy Image
+            Fetch a random dog via their breed/sub-breed. Or leave null for any dog.
             </summary>
-        </member>
-        <member name="P:RandomDog.Dog.Status">
-            <summary>
-            The status of dog
-            </summary>
-        </member>
-        <member name="P:RandomDog.Dog.Code">
-            <summary>
-            Error Code if any, 200 if success
-            </summary>
-        </member>
-        <member name="M:RandomDog.Dog.Fetch(System.String,System.String)">
-            <summary>
-            Get Dog
-            </summary>
+            <param name="breed"></param>
+            <param name="subBreed"></param>
             <returns></returns>
+        </member>
+        <member name="T:RandomDog.DogAPI`1">
+            <summary>
+            The base for all DogAPI request
+            </summary>
+        </member>
+        <member name="P:RandomDog.DogAPI`1.Message">
+            <summary>
+            The message from the api
+            </summary>
         </member>
         <member name="T:RandomDog.DogInfo">
             <summary>
-            Get all dog info.
+            Represents Info on dogs, these may contain images as well.
+            <para>Inherits <see cref="T:RandomDog.EnumerableDogAPI"/></para>
             </summary>
         </member>
-        <member name="P:RandomDog.DogInfo.Message">
+        <member name="M:RandomDog.DogInfo.GetRandomDogsAsync(System.Int32)">
             <summary>
-            A KeyValue dictionary of Dogs/Breeds/Sub-breeds.
+            Get a collection of random dogs.
             </summary>
-        </member>
-        <member name="P:RandomDog.DogInfo.Status">
-            <summary>
-            The status of the dog collection
-            </summary>
-        </member>
-        <member name="P:RandomDog.DogInfo.Doggies">
-            <summary>
-            An IEnumerable type list you can parse over to get specifics dogs and such
-            </summary>
-        </member>
-        <member name="M:RandomDog.DogInfo.Request">
-            <summary>
-            Request for a DogInfo list.
-            </summary>
+            <param name="count"></param>
             <returns></returns>
         </member>
-        <member name="P:RandomDog.DogInfo.Requested">
+        <member name="M:RandomDog.DogInfo.GetAllByBreedAsync(System.String)">
             <summary>
-            Get the last requested <see cref="T:RandomDog.DogInfo"/> to save on performance - Does not include failed request
-            </summary>
-        </member>
-        <member name="T:RandomDog.DogList">
-            <summary>
-            Represents a List of Dogs and their sub breeds in the forms of arrays.
-            </summary>
-        </member>
-        <member name="P:RandomDog.DogList.Item(System.String)">
-            <summary>
-            Get all sub breeds of a dog via its name
+            Returns an array of all the images from a breed, e.g. hound
             </summary>
             <param name="breed"></param>
             <returns></returns>
         </member>
-        <member name="M:RandomDog.DogList.GetEnumerator">
+        <member name="M:RandomDog.DogInfo.GetDogsOfBreedAsync(System.String,System.Int32)">
             <summary>
-            Get all dog names
+            Return multiple random dog images from a breed, e.g. hound
+            </summary>
+            <param name="breed"></param>
+            <param name="count"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RandomDog.DogInfo.GetSubBreedsAsync(System.String)">
+            <summary>
+            Returns an array of all the sub-breeds from a breed
             </summary>
             <returns></returns>
+        </member>
+        <member name="M:RandomDog.DogInfo.GetSubImagesAsync(System.String,System.String)">
+            <summary>
+            Returns an array of all the images from the sub-breed
+            </summary>
+            <param name="breed"></param>
+            <param name="subBreed"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RandomDog.DogInfo.GetDogsOfSubAsync(System.String,System.String,System.Int32)">
+            <summary>
+            Return multiple random dog images from a sub-breed, e.g. Afghan Hound
+            </summary>
+            <param name="breed"></param>
+            <param name="subBreed"></param>
+            <param name="count"></param>
+            <returns></returns>
+        </member>
+        <member name="T:RandomDog.DogList">
+            <summary>
+            Different from the <see cref="T:RandomDog.EnumerableDogAPI"/> as in it request only from a certain link <see cref="F:RandomDog.DogList.ListAll"/>
+            </summary>
+        </member>
+        <member name="M:RandomDog.DogList.GetAllAsync">
+            <summary>
+            Get every single dog! | NOT IMAGES
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:RandomDog.AllDog">
+            <summary>
+            All dogs in the form of a <see cref="T:System.String"/>[]
+            </summary>
+        </member>
+        <member name="T:RandomDog.EnumerableDogAPI">
+            <summary>
+            Represents the base dog api that has an <see cref="T:System.Collections.Generic.IEnumerable`1"/> message
+            </summary>
+        </member>
+        <member name="P:RandomDog.EnumerableDogAPI.Message">
+            <summary>
+            The Enumerable message
+            </summary>
         </member>
     </members>
 </doc>

@@ -5,203 +5,41 @@ using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace RandomDog
 {
     /// <summary>
-    /// DOG!
+    /// A single dog that has been requested.
     /// </summary>
-    public sealed class Dog
+    public sealed class Dog : DogAPI<string>
     {
         /// <summary>
-        /// Doggy Image
-        /// </summary>
-        [JsonProperty("message")]
-        public string Message { get; private set; }
-
-        /// <summary>
-        /// The status of dog
-        /// </summary>
-        [JsonProperty("status")]
-        public string Status { get; private set; }
-
-        /// <summary>
-        /// Error Code if any, 200 if success
-        /// </summary>
-        [JsonProperty("code")]
-        public int Code { get; private set; } = 200;
-
-        /// <summary>
-        /// Get Dog
-        /// </summary>
-        /// <returns></returns>
-        public static async Task<Dog> Fetch(string breed = null, string subBreed = null)
-        {
-            if (subBreed != null && breed == null)
-                return new Dog() 
-                {
-                    Code = 404,
-                    Status = "error",
-                    Message = "You cannot get a dog via sub breed."
-                };
-
-            try
-            {
-                string downloadLink = string.Empty;
-
-                using WebClient client = new WebClient();
-                if (breed == null)
-                    downloadLink = "https://dog.ceo/api/breeds/image/random";
-                else if (breed != null && subBreed == null)
-                    downloadLink = $"https://dog.ceo/api/breed/{breed}/images/random";
-                else
-                    downloadLink = $"https://dog.ceo/api/breed/{breed}/{subBreed}/images/random";
-
-                string jsonConvertable = await client.DownloadStringTaskAsync(downloadLink);
-                return JsonConvert.DeserializeObject<Dog>(jsonConvertable);
-            }
-            catch
-            {
-                return new Dog()
-                {
-                    Code = 404,
-                    Message = "Dog Not Found",
-                    Status = "error"
-                };
-            }
-
-        }
-
-
-    }
-
-    /// <summary>
-    /// Get all dog info.
-    /// </summary>
-    public sealed class DogInfo
-    {
-        /// <summary>
-        /// A KeyValue dictionary of Dogs/Breeds/Sub-breeds.
-        /// </summary>
-        [JsonProperty("message")]
-        public JObject Message { get; private set; }
-
-        /// <summary>
-        /// The status of the dog collection
-        /// </summary>
-        [JsonProperty("status")]
-        public string Status { get; private set; }
-
-        /// <summary>
-        /// An IEnumerable type list you can parse over to get specifics dogs and such
-        /// </summary>
-        public DogList Doggies
-        {
-            get
-            {
-                return (Message == null) ? null : new DogList(Message);
-            }
-        }
-
-        /// <summary>
-        /// Request for a DogInfo list.
-        /// </summary>
-        /// <returns></returns>
-        public static async Task<DogInfo> Request()
-        {
-            try
-            {
-                using WebClient client = new WebClient();
-
-                string downloaded = await client.DownloadStringTaskAsync("https://dog.ceo/api/breeds/list/all");
-
-                _last = JsonConvert.DeserializeObject<DogInfo>(downloaded);
-                return _last;
-            }
-            catch 
-            {
-                return new DogInfo
-                {
-                    Message = null,
-                    Status = "Could not reach 'https://dog.ceo/api/breeds/list/all'"
-                };
-            }
-        }
-
-        private static DogInfo _last = null;
-        /// <summary>
-        /// Get the last requested <see cref="DogInfo"/> to save on performance - Does not include failed request
-        /// </summary>
-        public static DogInfo Requested
-        {
-            get
-            {
-                if(_last == null)
-                {
-                    return new DogInfo()
-                    {
-                        Message = null,
-                        Status = "There has been zero former request."
-                    };
-                }
-
-                return _last;
-            }
-        }
-    }
-
-    /// <summary>
-    /// Represents a List of Dogs and their sub breeds in the forms of arrays.
-    /// </summary>
-    public sealed class DogList : IEnumerable<string>
-    {
-        private JObject Doggies { get; set; }
-        internal DogList(JObject obj)
-        {
-            Doggies = obj;
-            
-        }
-
-        /// <summary>
-        /// Get all sub breeds of a dog via its name
+        /// Fetch a random dog via their breed/sub-breed. Or leave null for any dog.
         /// </summary>
         /// <param name="breed"></param>
+        /// <param name="subBreed"></param>
         /// <returns></returns>
-        public string[] this[string breed]
+        public static async Task<Dog> FetchAsync(string breed = null, string subBreed = null)
         {
-            get
-            {
-                Doggies.TryGetValue(breed, StringComparison.OrdinalIgnoreCase, out JToken token);
+            string _base = string.Empty;
 
-                if (token == null)
-                    return Array.Empty<string>();
+            bool breedVal = string.IsNullOrEmpty(breed);
+            bool subBreedVal = string.IsNullOrEmpty(subBreed);
 
-                List<string> doggies = new List<string>();
-                foreach (JToken sub in token.Values())
-                {
-                    doggies.Add($"{sub}");
-                }
+            if (breedVal && !subBreedVal)
+                throw new Exception("You cannot get a dog by a Sub-breed alone. Breed must not be null or Empty!");
 
-                return doggies.ToArray();
-            }
-        }
+            if (breedVal && subBreedVal)
+                _base = "https://dog.ceo/api/breeds/image/random";
+            else if (!breedVal && subBreedVal)
+                _base = $"https://dog.ceo/api/breed/{breed}/images/random";
+            else
+                _base = $"https://dog.ceo/api/breed/{breed}/{subBreed}/images/random";
 
-        /// <summary>
-        /// Get all dog names
-        /// </summary>
-        /// <returns></returns>
-        public IEnumerator<string> GetEnumerator()
-        {
-            foreach (JProperty property in Doggies.Properties())
-            {
-                yield return property.Name;
-            }
-        }
+            string json = await (await ApiRequester.RequestAPIAsync(_base, ApiRequester.RequestType.Get)).Content.ReadAsStringAsync();
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
+            return JsonConvert.DeserializeObject<Dog>(json);
         }
     }
-
 }
