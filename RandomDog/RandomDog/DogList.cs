@@ -260,7 +260,7 @@ namespace RandomDog
         {
             bool a = Enum.TryParse(name, out DogBreeds res);
 
-            error = a;
+            error = !a;
 
             if (!a)
                 return Array.Empty<string>();
