@@ -199,6 +199,7 @@
             Get a sub-breed of dogs by their name.
             </summary>
             <param name="name"></param>
+            <param name="error"></param>
             <returns></returns>
         </member>
         <member name="T:RandomDog.EnumerableDogAPI">

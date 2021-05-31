@@ -254,12 +254,13 @@ namespace RandomDog
         /// Get a sub-breed of dogs by their name.
         /// </summary>
         /// <param name="name"></param>
+        /// <param name="error"></param>
         /// <returns></returns>
-        public string[] GetByName(string name, out bool z)
+        public string[] GetByName(string name, out bool error)
         {
             bool a = Enum.TryParse(name, out DogBreeds res);
 
-            z = a;
+            error = a;
 
             if (!a)
                 return Array.Empty<string>();
