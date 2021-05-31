@@ -35,6 +35,14 @@ namespace RandomDog
         }
 
         /// <summary>
+        /// Get a collection of random dogs.
+        /// </summary>
+        /// <param name="count"></param>
+        /// <returns></returns>
+        public static DogInfo GetRandomDogs(int count) => GetRandomDogsAsync(count).Result;
+
+
+        /// <summary>
         /// Returns an array of all the images from a breed, e.g. hound
         /// </summary>
         /// <param name="breed"></param>
@@ -47,6 +55,14 @@ namespace RandomDog
 
             return JsonConvert.DeserializeObject<DogInfo>(json);
         }
+
+        /// <summary>
+        /// Returns an array of all the images from a breed, e.g. hound
+        /// </summary>
+        /// <param name="breed"></param>
+        /// <returns></returns>
+        public static DogInfo GetAllByBreed(string breed) => GetAllByBreedAsync(breed).Result;
+
 
         /// <summary>
         /// Return multiple random dog images from a breed, e.g. hound
@@ -77,6 +93,14 @@ namespace RandomDog
         }
 
         /// <summary>
+        /// Return multiple random dog images from a breed, e.g. hound
+        /// </summary>
+        /// <param name="breed"></param>
+        /// <param name="count"></param>
+        /// <returns></returns>
+        public static DogInfo GetDogsOfBreed(string breed, int count) => GetDogsOfBreedAsync(breed, count).Result;
+
+        /// <summary>
         /// Returns an array of all the sub-breeds from a breed
         /// </summary>
         /// <returns></returns>
@@ -101,6 +125,13 @@ namespace RandomDog
 
             return JsonConvert.DeserializeObject<DogInfo>(json);
         }
+
+
+        /// <summary>
+        /// Returns an array of all the sub-breeds from a breed
+        /// </summary>
+        /// <returns></returns>
+        public static DogInfo GetSubBreeds(string breed) => GetSubBreedsAsync(breed).Result;
 
         /// <summary>
         /// Returns an array of all the images from the sub-breed
@@ -136,6 +167,14 @@ namespace RandomDog
         }
 
         /// <summary>
+        /// Returns an array of all the images from the sub-breed
+        /// </summary>
+        /// <param name="breed"></param>
+        /// <param name="subBreed"></param>
+        /// <returns></returns>
+        public DogInfo GetSubImages(string breed, string subBreed) => GetSubImagesAsync(breed, subBreed).Result;
+
+        /// <summary>
         /// Return multiple random dog images from a sub-breed, e.g. Afghan Hound
         /// </summary>
         /// <param name="breed"></param>
@@ -168,6 +207,15 @@ namespace RandomDog
 
             return JsonConvert.DeserializeObject<DogInfo>(json);
         }
+
+        /// <summary>
+        /// Return multiple random dog images from a sub-breed, e.g. Afghan Hound
+        /// </summary>
+        /// <param name="breed"></param>
+        /// <param name="subBreed"></param>
+        /// <param name="count"></param>
+        /// <returns></returns>
+        public static DogInfo GetDogsOfSub(string breed, string subBreed, int count) => GetDogsOfSubAsync(breed, subBreed, count).Result;
 
         private static bool JsonError(string json, out BadRequest request)
         {

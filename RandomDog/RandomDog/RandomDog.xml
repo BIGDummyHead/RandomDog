@@ -46,6 +46,14 @@
             <param name="subBreed"></param>
             <returns></returns>
         </member>
+        <member name="M:RandomDog.Dog.Fetch(System.String,System.String)">
+            <summary>
+            Fetch a random dog via their breed/sub-breed. Or leave null for any dog.
+            </summary>
+            <param name="breed"></param>
+            <param name="subBreed"></param>
+            <returns></returns>
+        </member>
         <member name="T:RandomDog.DogAPI`1">
             <summary>
             The base for all DogAPI request
@@ -69,7 +77,21 @@
             <param name="count"></param>
             <returns></returns>
         </member>
+        <member name="M:RandomDog.DogInfo.GetRandomDogs(System.Int32)">
+            <summary>
+            Get a collection of random dogs.
+            </summary>
+            <param name="count"></param>
+            <returns></returns>
+        </member>
         <member name="M:RandomDog.DogInfo.GetAllByBreedAsync(System.String)">
+            <summary>
+            Returns an array of all the images from a breed, e.g. hound
+            </summary>
+            <param name="breed"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RandomDog.DogInfo.GetAllByBreed(System.String)">
             <summary>
             Returns an array of all the images from a breed, e.g. hound
             </summary>
@@ -84,13 +106,35 @@
             <param name="count"></param>
             <returns></returns>
         </member>
+        <member name="M:RandomDog.DogInfo.GetDogsOfBreed(System.String,System.Int32)">
+            <summary>
+            Return multiple random dog images from a breed, e.g. hound
+            </summary>
+            <param name="breed"></param>
+            <param name="count"></param>
+            <returns></returns>
+        </member>
         <member name="M:RandomDog.DogInfo.GetSubBreedsAsync(System.String)">
             <summary>
             Returns an array of all the sub-breeds from a breed
             </summary>
             <returns></returns>
         </member>
+        <member name="M:RandomDog.DogInfo.GetSubBreeds(System.String)">
+            <summary>
+            Returns an array of all the sub-breeds from a breed
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:RandomDog.DogInfo.GetSubImagesAsync(System.String,System.String)">
+            <summary>
+            Returns an array of all the images from the sub-breed
+            </summary>
+            <param name="breed"></param>
+            <param name="subBreed"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RandomDog.DogInfo.GetSubImages(System.String,System.String)">
             <summary>
             Returns an array of all the images from the sub-breed
             </summary>
@@ -107,12 +151,32 @@
             <param name="count"></param>
             <returns></returns>
         </member>
+        <member name="M:RandomDog.DogInfo.GetDogsOfSub(System.String,System.String,System.Int32)">
+            <summary>
+            Return multiple random dog images from a sub-breed, e.g. Afghan Hound
+            </summary>
+            <param name="breed"></param>
+            <param name="subBreed"></param>
+            <param name="count"></param>
+            <returns></returns>
+        </member>
         <member name="T:RandomDog.DogList">
             <summary>
             Different from the <see cref="T:RandomDog.EnumerableDogAPI"/> as in it request only from a certain link <see cref="F:RandomDog.DogList.ListAll"/>
             </summary>
         </member>
+        <member name="P:RandomDog.DogList.LastRequested">
+            <summary>
+            The last requested <see cref="T:RandomDog.DogList"/> | CAN BE NULL
+            </summary>
+        </member>
         <member name="M:RandomDog.DogList.GetAllAsync">
+            <summary>
+            Get every single dog! | NOT IMAGES
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:RandomDog.DogList.GetAll">
             <summary>
             Get every single dog! | NOT IMAGES
             </summary>

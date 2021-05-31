@@ -41,5 +41,13 @@ namespace RandomDog
 
             return JsonConvert.DeserializeObject<Dog>(json);
         }
+
+        /// <summary>
+        /// Fetch a random dog via their breed/sub-breed. Or leave null for any dog.
+        /// </summary>
+        /// <param name="breed"></param>
+        /// <param name="subBreed"></param>
+        /// <returns></returns>
+        public static Dog Fetch(string breed = null, string subBreed = null) => FetchAsync(breed, subBreed).Result;
     }
 }

@@ -13,6 +13,13 @@ namespace RandomDog
     {
         private const string ListAll = "https://dog.ceo/api/breeds/list/all";
 
+        private static DogList _last;
+
+        /// <summary>
+        /// The last requested <see cref="DogList"/> | CAN BE NULL
+        /// </summary>
+        public DogList LastRequested => _last;
+
         /// <summary>
         /// Get every single dog! | NOT IMAGES
         /// </summary>
@@ -21,8 +28,15 @@ namespace RandomDog
         {
             string json = await (await ApiRequester.RequestAPIAsync(ListAll, ApiRequester.RequestType.Get)).Content.ReadAsStringAsync();
 
-            return JsonConvert.DeserializeObject<DogList>(json);
+            _last = JsonConvert.DeserializeObject<DogList>(json);
+            return _last;
         }
+
+        /// <summary>
+        /// Get every single dog! | NOT IMAGES
+        /// </summary>
+        /// <returns></returns>
+        public static DogList GetAll() => GetAllAsync().Result;
     }
 
     /// <summary>
