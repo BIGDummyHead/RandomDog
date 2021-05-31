@@ -14,6 +14,8 @@ namespace RandomDog
     /// </summary>
     public sealed class Dog : DogAPI<string>
     {
+
+
         /// <summary>
         /// Fetch a random dog via their breed/sub-breed. Or leave null for any dog.
         /// </summary>
@@ -51,3 +53,4 @@ namespace RandomDog
         public static Dog Fetch(string breed = null, string subBreed = null) => FetchAsync(breed, subBreed).Result;
     }
 }
+

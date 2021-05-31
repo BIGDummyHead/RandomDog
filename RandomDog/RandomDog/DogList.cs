@@ -18,7 +18,7 @@ namespace RandomDog
         /// <summary>
         /// The last requested <see cref="DogList"/> | CAN BE NULL
         /// </summary>
-        public DogList LastRequested => _last;
+        public static DogList LastRequested => _last;
 
         /// <summary>
         /// Get every single dog! | NOT IMAGES
