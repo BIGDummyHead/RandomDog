@@ -10,7 +10,7 @@
     <Authors>BIGDummyHead</Authors>
     <RepositoryUrl>https://github.com/BIGDummyHead/RandomDog</RepositoryUrl>
     <Version>1.1.0.2</Version>
-    <OutputType>Library</OutputType>
+    <OutputType>Exe</OutputType>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -27,6 +27,7 @@
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
+    <None Include="..\.editorconfig" Link=".editorconfig" />
   </ItemGroup>
 
 </Project>

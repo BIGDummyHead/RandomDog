@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,9 +8,9 @@ using System.Threading.Tasks;
 namespace RandomDog
 {
     /// <summary>
-    /// Different from the <see cref="EnumerableDogAPI"/> as in it request only from a certain link <see cref="ListAll"/>
     /// </summary>
-    public class DogList : DogAPI<AllDog>
+    [JsonObject]
+    public class DogList : BaseApi<AllDog>, IEnumerable<string[]>
     {
         private const string ListAll = "https://dog.ceo/api/breeds/list/all";
 
@@ -26,7 +27,7 @@ namespace RandomDog
         /// <returns></returns>
         public static async Task<DogList> GetAllAsync()
         {
-            string json = await (await ApiRequester.RequestAPIAsync(ListAll, ApiRequester.RequestType.Get)).Content.ReadAsStringAsync();
+            string json = await (await ApiRequester.RequestAPIAsync(ListAll, RequestType.Get)).Content.ReadAsStringAsync();
 
             _last = JsonConvert.DeserializeObject<DogList>(json);
             return _last;
@@ -38,6 +39,22 @@ namespace RandomDog
         /// <returns></returns>
         public static DogList GetAll() => GetAllAsync().Result;
 
+        /// <summary>
+        /// You can use this to get all the dogs you want.
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerator<string[]> GetEnumerator()
+        {
+            foreach (string[] item in Message.AllDogs)
+            {
+                yield return item;
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
     }
 
     /// <summary>
@@ -54,199 +71,116 @@ namespace RandomDog
         {
             get
             {
-                switch (index)
+                return index switch
                 {
-                    case DogBreeds.affenpinscher:
-                        return affenpinscher;
-                    case DogBreeds.african:
-                        return african;
-                    case DogBreeds.airedale:
-                        return airedale;
-                    case DogBreeds.akita:
-                        return akita;
-                    case DogBreeds.appenzeller:
-                        return appenzeller;
-                    case DogBreeds.australian:
-                        return australian;
-                    case DogBreeds.basenji:
-                        return basenji;
-                    case DogBreeds.beagle:
-                        return beagle;
-                    case DogBreeds.bluetick:
-                        return bluetick;
-                    case DogBreeds.borzoi:
-                        return borzoi;
-                    case DogBreeds.bouvier:
-                        return bouvier;
-                    case DogBreeds.boxer:
-                        return boxer;
-                    case DogBreeds.brabancon:
-                        return brabancon;
-                    case DogBreeds.briard:
-                        return briard;
-                    case DogBreeds.bulldog:
-                        return bulldog;
-                    case DogBreeds.bullterrier:
-                        return bullterrier;
-                    case DogBreeds.cairn:
-                        return cairn;
-                    case DogBreeds.cattledog:
-                        return cattledog;
-                    case DogBreeds.chihuahua:
-                        return chihuahua;
-                    case DogBreeds.chow:
-                        return chow;
-                    case DogBreeds.clumber:
-                        return clumber;
-                    case DogBreeds.cockapoo:
-                        return cockapoo;
-                    case DogBreeds.collie:
-                        return collie;
-                    case DogBreeds.coonhound:
-                        return coonhound;
-                    case DogBreeds.corgi:
-                        return corgi;
-                    case DogBreeds.cotondetulear:
-                        return cotondetulear;
-                    case DogBreeds.dachshund:
-                        return dachshund;
-                    case DogBreeds.dalmatian:
-                        return dalmatian;
-                    case DogBreeds.dane:
-                        return dane;
-                    case DogBreeds.deerhound:
-                        return deerhound;
-                    case DogBreeds.dhole:
-                        return dhole;
-                    case DogBreeds.dingo:
-                        return dingo;
-                    case DogBreeds.doberman:
-                        return doberman;
-                    case DogBreeds.elkhound:
-                        return elkhound;
-                    case DogBreeds.entlebucher:
-                        return entlebucher;
-                    case DogBreeds.eskimo:
-                        return eskimo;
-                    case DogBreeds.finnish:
-                        return finnish;
-                    case DogBreeds.frise:
-                        return frise;
-                    case DogBreeds.germanshepherd:
-                        return germanshepherd;
-                    case DogBreeds.greyhound:
-                        return greyhound;
-                    case DogBreeds.groenendael:
-                        return groenendael;
-                    case DogBreeds.havanese:
-                        return havanese;
-                    case DogBreeds.hound:
-                        return hound;
-                    case DogBreeds.husky:
-                        return husky;
-                    case DogBreeds.keeshond:
-                        return keeshond;
-                    case DogBreeds.kelpie:
-                        return kelpie;
-                    case DogBreeds.komondor:
-                        return komondor;
-                    case DogBreeds.kuvasz:
-                        return kuvasz;
-                    case DogBreeds.labradoodle:
-                        return labradoodle;
-                    case DogBreeds.labrador:
-                        return labrador;
-                    case DogBreeds.leonberg:
-                        return leonberg;
-                    case DogBreeds.lhasa:
-                        return lhasa;
-                    case DogBreeds.malamute:
-                        return malamute;
-                    case DogBreeds.malinois:
-                        return malinois;
-                    case DogBreeds.maltese:
-                        return maltese;
-                    case DogBreeds.mastiff:
-                        return mastiff;
-                    case DogBreeds.mexicanhairless:
-                        return mexicanhairless;
-                    case DogBreeds.mix:
-                        return mix;
-                    case DogBreeds.mountain:
-                        return mountain;
-                    case DogBreeds.newfoundland:
-                        return newfoundland;
-                    case DogBreeds.otterhound:
-                        return otterhound;
-                    case DogBreeds.ovcharka:
-                        return ovcharka;
-                    case DogBreeds.papillon:
-                        return papillon;
-                    case DogBreeds.pekinese:
-                        return pekinese;
-                    case DogBreeds.pembroke:
-                        return pembroke;
-                    case DogBreeds.pinscher:
-                        return pinscher;
-                    case DogBreeds.pitbull:
-                        return pitbull;
-                    case DogBreeds.pointer:
-                        return pointer;
-                    case DogBreeds.pomeranian:
-                        return pomeranian;
-                    case DogBreeds.poodle:
-                        return poodle;
-                    case DogBreeds.pug:
-                        return pug;
-                    case DogBreeds.puggle:
-                        return puggle;
-                    case DogBreeds.pyrenees:
-                        return pyrenees;
-                    case DogBreeds.redbone:
-                        return redbone;
-                    case DogBreeds.retriever:
-                        return retriever;
-                    case DogBreeds.ridgeback:
-                        return ridgeback;
-                    case DogBreeds.rottweiler:
-                        return rottweiler;
-                    case DogBreeds.saluki:
-                        return saluki;
-                    case DogBreeds.samoyed:
-                        return samoyed;
-                    case DogBreeds.schipperke:
-                        return schipperke;
-                    case DogBreeds.schnauzer:
-                        return schnauzer;
-                    case DogBreeds.setter:
-                        return setter;
-                    case DogBreeds.sheepdog:
-                        return sheepdog;
-                    case DogBreeds.shiba:
-                        return shiba;
-                    case DogBreeds.shihtzu:
-                        return shihtzu;
-                    case DogBreeds.spaniel:
-                        return spaniel;
-                    case DogBreeds.springer:
-                        return springer;
-                    case DogBreeds.stbernard:
-                        return stbernard;
-                    case DogBreeds.terrier:
-                        return terrier;
-                    case DogBreeds.vizsla:
-                        return vizsla;
-                    case DogBreeds.waterdog:
-                        return waterdog;
-                    case DogBreeds.weimaraner:
-                        return weimaraner;
-                    case DogBreeds.whippet:
-                        return whippet;
-                    case DogBreeds.wolfhound:
-                        return wolfhound;
-                    default:
-                        return Array.Empty<string>();
-                }
+                    DogBreeds.affenpinscher => affenpinscher,
+                    DogBreeds.african => african,
+                    DogBreeds.airedale => airedale,
+                    DogBreeds.akita => akita,
+                    DogBreeds.appenzeller => appenzeller,
+                    DogBreeds.australian => australian,
+                    DogBreeds.basenji => basenji,
+                    DogBreeds.beagle => beagle,
+                    DogBreeds.bluetick => bluetick,
+                    DogBreeds.borzoi => borzoi,
+                    DogBreeds.bouvier => bouvier,
+                    DogBreeds.boxer => boxer,
+                    DogBreeds.brabancon => brabancon,
+                    DogBreeds.briard => briard,
+                    DogBreeds.bulldog => bulldog,
+                    DogBreeds.bullterrier => bullterrier,
+                    DogBreeds.cairn => cairn,
+                    DogBreeds.cattledog => cattledog,
+                    DogBreeds.chihuahua => chihuahua,
+                    DogBreeds.chow => chow,
+                    DogBreeds.clumber => clumber,
+                    DogBreeds.cockapoo => cockapoo,
+                    DogBreeds.collie => collie,
+                    DogBreeds.coonhound => coonhound,
+                    DogBreeds.corgi => corgi,
+                    DogBreeds.cotondetulear => cotondetulear,
+                    DogBreeds.dachshund => dachshund,
+                    DogBreeds.dalmatian => dalmatian,
+                    DogBreeds.dane => dane,
+                    DogBreeds.deerhound => deerhound,
+                    DogBreeds.dhole => dhole,
+                    DogBreeds.dingo => dingo,
+                    DogBreeds.doberman => doberman,
+                    DogBreeds.elkhound => elkhound,
+                    DogBreeds.entlebucher => entlebucher,
+                    DogBreeds.eskimo => eskimo,
+                    DogBreeds.finnish => finnish,
+                    DogBreeds.frise => frise,
+                    DogBreeds.germanshepherd => germanshepherd,
+                    DogBreeds.greyhound => greyhound,
+                    DogBreeds.groenendael => groenendael,
+                    DogBreeds.havanese => havanese,
+                    DogBreeds.hound => hound,
+                    DogBreeds.husky => husky,
+                    DogBreeds.keeshond => keeshond,
+                    DogBreeds.kelpie => kelpie,
+                    DogBreeds.komondor => komondor,
+                    DogBreeds.kuvasz => kuvasz,
+                    DogBreeds.labradoodle => labradoodle,
+                    DogBreeds.labrador => labrador,
+                    DogBreeds.leonberg => leonberg,
+                    DogBreeds.lhasa => lhasa,
+                    DogBreeds.malamute => malamute,
+                    DogBreeds.malinois => malinois,
+                    DogBreeds.maltese => maltese,
+                    DogBreeds.mastiff => mastiff,
+                    DogBreeds.mexicanhairless => mexicanhairless,
+                    DogBreeds.mix => mix,
+                    DogBreeds.mountain => mountain,
+                    DogBreeds.newfoundland => newfoundland,
+                    DogBreeds.otterhound => otterhound,
+                    DogBreeds.ovcharka => ovcharka,
+                    DogBreeds.papillon => papillon,
+                    DogBreeds.pekinese => pekinese,
+                    DogBreeds.pembroke => pembroke,
+                    DogBreeds.pinscher => pinscher,
+                    DogBreeds.pitbull => pitbull,
+                    DogBreeds.pointer => pointer,
+                    DogBreeds.pomeranian => pomeranian,
+                    DogBreeds.poodle => poodle,
+                    DogBreeds.pug => pug,
+                    DogBreeds.puggle => puggle,
+                    DogBreeds.pyrenees => pyrenees,
+                    DogBreeds.redbone => redbone,
+                    DogBreeds.retriever => retriever,
+                    DogBreeds.ridgeback => ridgeback,
+                    DogBreeds.rottweiler => rottweiler,
+                    DogBreeds.saluki => saluki,
+                    DogBreeds.samoyed => samoyed,
+                    DogBreeds.schipperke => schipperke,
+                    DogBreeds.schnauzer => schnauzer,
+                    DogBreeds.setter => setter,
+                    DogBreeds.sheepdog => sheepdog,
+                    DogBreeds.shiba => shiba,
+                    DogBreeds.shihtzu => shihtzu,
+                    DogBreeds.spaniel => spaniel,
+                    DogBreeds.springer => springer,
+                    DogBreeds.stbernard => stbernard,
+                    DogBreeds.terrier => terrier,
+                    DogBreeds.vizsla => vizsla,
+                    DogBreeds.waterdog => waterdog,
+                    DogBreeds.weimaraner => weimaraner,
+                    DogBreeds.whippet => whippet,
+                    DogBreeds.wolfhound => wolfhound,
+                    _ => Array.Empty<string>(),
+                };
+            }
+        }
+
+        /// <summary>
+        /// Every single dog
+        /// </summary>
+        public IEnumerable<string[]> AllDogs
+        {
+            get
+            {
+                foreach (DogBreeds dog in AllBreeds)
+                    yield return this[dog];
             }
         }
 
@@ -258,11 +192,9 @@ namespace RandomDog
         /// <returns></returns>
         public string[] GetByName(string name, out bool error)
         {
-            bool a = Enum.TryParse(name, true, out DogBreeds res);
+            error = !Enum.TryParse(name, true, out DogBreeds res);
 
-            error = !a;
-
-            if (!a)
+            if (error)
                 return Array.Empty<string>();
 
             return this[res];
@@ -364,7 +296,19 @@ namespace RandomDog
         public string[] whippet { get; set; }
         public string[] wolfhound { get; set; }
 
+        /// <summary>
+        /// All breeds that can be used in a foreach statement
+        /// </summary>
+        public IEnumerable<DogBreeds> AllBreeds
+        {
+            get
+            {
+                var vals = Enum.GetValues(typeof(DogBreeds));
 
+                foreach (var item in vals)
+                    yield return (DogBreeds)item;
+            }
+        }
     }
 
     public enum DogBreeds

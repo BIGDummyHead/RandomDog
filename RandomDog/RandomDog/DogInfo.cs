@@ -1,14 +1,16 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace RandomDog
 {
     /// <summary>
     /// Represents Info on dogs, these may contain images as well.
-    /// <para>Inherits <see cref="EnumerableDogAPI"/></para>
     /// </summary>
-    public sealed class DogInfo : EnumerableDogAPI
+    [JsonObject]
+    public sealed class DogInfo : BaseApi<string[]>, IEnumerable<string>
     {
         private const string DogCollection = "https://dog.ceo/api/breeds/image/random/";
 
@@ -21,7 +23,7 @@ namespace RandomDog
         {
             string apiReq = DogCollection + count.ToString();
 
-            string json = await (await ApiRequester.RequestAPIAsync(apiReq, ApiRequester.RequestType.Get)).Content.ReadAsStringAsync();
+            string json = await (await ApiRequester.RequestAPIAsync(apiReq, RequestType.Get)).Content.ReadAsStringAsync();
 
             if (JsonError(json, out BadRequest request))
                 return new DogInfo()
@@ -51,7 +53,7 @@ namespace RandomDog
         {
             string req = $"https://dog.ceo/api/breed/{breed}/images";
 
-            string json = await (await ApiRequester.RequestAPIAsync(req, ApiRequester.RequestType.Get)).Content.ReadAsStringAsync();
+            string json = await (await ApiRequester.RequestAPIAsync(req, RequestType.Get)).Content.ReadAsStringAsync();
 
             return JsonConvert.DeserializeObject<DogInfo>(json);
         }
@@ -79,7 +81,7 @@ namespace RandomDog
 
             string req = $"https://dog.ceo/api/breed/{breed}/images/random/{count}";
 
-            string json = await (await ApiRequester.RequestAPIAsync(req, ApiRequester.RequestType.Get)).Content.ReadAsStringAsync();
+            string json = await (await ApiRequester.RequestAPIAsync(req, RequestType.Get)).Content.ReadAsStringAsync();
 
             if (JsonError(json, out BadRequest request))
                 return new DogInfo()
@@ -113,7 +115,7 @@ namespace RandomDog
 
             string req = $"https://dog.ceo/api/breed/{breed}/list";
 
-            string json = await (await ApiRequester.RequestAPIAsync(req, ApiRequester.RequestType.Get)).Content.ReadAsStringAsync();
+            string json = await (await ApiRequester.RequestAPIAsync(req, RequestType.Get)).Content.ReadAsStringAsync();
 
             if (JsonError(json, out BadRequest request))
                 return new DogInfo()
@@ -153,7 +155,7 @@ namespace RandomDog
 
             string req = $"https://dog.ceo/api/breed/{breed}/{subBreed}/images";
 
-            string json = await (await ApiRequester.RequestAPIAsync(req, ApiRequester.RequestType.Get)).Content.ReadAsStringAsync();
+            string json = await (await ApiRequester.RequestAPIAsync(req, RequestType.Get)).Content.ReadAsStringAsync();
 
             if (JsonError(json, out BadRequest request))
                 return new DogInfo()
@@ -195,7 +197,7 @@ namespace RandomDog
 
             string req = $"https://dog.ceo/api/breed/{breed}/{subBreed}/images/random/{count}";
 
-            string json = await (await ApiRequester.RequestAPIAsync(req, ApiRequester.RequestType.Get)).Content.ReadAsStringAsync();
+            string json = await (await ApiRequester.RequestAPIAsync(req, RequestType.Get)).Content.ReadAsStringAsync();
 
             if (JsonError(json, out BadRequest request))
                 return new DogInfo() 
@@ -221,6 +223,23 @@ namespace RandomDog
         {
             request = JsonConvert.DeserializeObject<BadRequest>(json);
             return request.HasError;
+        }
+
+        /// <summary>
+        /// <see cref = "BaseApi{T}.Message" />
+        /// </summary >
+        /// <returns ></returns>
+        public IEnumerator<string> GetEnumerator()
+        {
+            foreach (string item in Message)
+            {
+                yield return item;
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
         }
     }
 

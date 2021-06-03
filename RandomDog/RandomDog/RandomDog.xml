@@ -4,7 +4,7 @@
         <name>RandomDog</name>
     </assembly>
     <members>
-        <member name="M:RandomDog.ApiRequester.RequestAPIAsync(System.String,RandomDog.ApiRequester.RequestType)">
+        <member name="M:RandomDog.ApiRequester.RequestAPIAsync(System.String,RandomDog.RequestType)">
             <summary>
             Runs asnyc
             </summary>
@@ -33,6 +33,16 @@
             Returns | Code != 200
             </summary>
         </member>
+        <member name="T:RandomDog.BaseApi`1">
+            <summary>
+            The base for all Dog API request
+            </summary>
+        </member>
+        <member name="P:RandomDog.BaseApi`1.Message">
+            <summary>
+            The message from the api
+            </summary>
+        </member>
         <member name="T:RandomDog.Dog">
             <summary>
             A single dog that has been requested.
@@ -54,20 +64,9 @@
             <param name="subBreed"></param>
             <returns></returns>
         </member>
-        <member name="T:RandomDog.DogAPI`1">
-            <summary>
-            The base for all DogAPI request
-            </summary>
-        </member>
-        <member name="P:RandomDog.DogAPI`1.Message">
-            <summary>
-            The message from the api
-            </summary>
-        </member>
         <member name="T:RandomDog.DogInfo">
             <summary>
             Represents Info on dogs, these may contain images as well.
-            <para>Inherits <see cref="T:RandomDog.EnumerableDogAPI"/></para>
             </summary>
         </member>
         <member name="M:RandomDog.DogInfo.GetRandomDogsAsync(System.Int32)">
@@ -160,9 +159,14 @@
             <param name="count"></param>
             <returns></returns>
         </member>
+        <member name="M:RandomDog.DogInfo.GetEnumerator">
+            <summary>
+            <see cref = "P:RandomDog.BaseApi`1.Message" />
+            </summary >
+            <returns ></returns>
+        </member>
         <member name="T:RandomDog.DogList">
             <summary>
-            Different from the <see cref="T:RandomDog.EnumerableDogAPI"/> as in it request only from a certain link <see cref="F:RandomDog.DogList.ListAll"/>
             </summary>
         </member>
         <member name="P:RandomDog.DogList.LastRequested">
@@ -182,6 +186,12 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:RandomDog.DogList.GetEnumerator">
+            <summary>
+            You can use this to get all the dogs you want.
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:RandomDog.AllDog">
             <summary>
             All dogs in the form of a <see cref="T:System.String"/>[]
@@ -194,6 +204,11 @@
             <param name="index"></param>
             <returns></returns>
         </member>
+        <member name="P:RandomDog.AllDog.AllDogs">
+            <summary>
+            Every single dog
+            </summary>
+        </member>
         <member name="M:RandomDog.AllDog.GetByName(System.String,System.Boolean@)">
             <summary>
             Get a sub-breed of dogs by their name.
@@ -202,14 +217,9 @@
             <param name="error"></param>
             <returns></returns>
         </member>
-        <member name="T:RandomDog.EnumerableDogAPI">
+        <member name="P:RandomDog.AllDog.AllBreeds">
             <summary>
-            Represents the base dog api that has an <see cref="T:System.Collections.Generic.IEnumerable`1"/> message
-            </summary>
-        </member>
-        <member name="P:RandomDog.EnumerableDogAPI.Message">
-            <summary>
-            The Enumerable message
+            All breeds that can be used in a foreach statement
             </summary>
         </member>
     </members>

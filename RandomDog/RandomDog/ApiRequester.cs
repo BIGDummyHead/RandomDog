@@ -36,12 +36,13 @@ namespace RandomDog
 
         public static HttpResponseMessage RequestAPI(string absoluteURL, RequestType req) => RequestAPIAsync(absoluteURL, req).GetAwaiter().GetResult();
 
-        public enum RequestType
-        {
-            Get,
-            Post,
-            Put,
-            Delete
-        }
+    }
+
+    internal enum RequestType
+    {
+        Get,
+        Post,
+        Put,
+        Delete
     }
 }

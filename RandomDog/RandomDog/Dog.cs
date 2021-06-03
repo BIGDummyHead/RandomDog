@@ -9,10 +9,35 @@ using System.Linq;
 
 namespace RandomDog
 {
+    class Program
+    {
+        static async Task Main()
+        {
+            var x = DogList.LastRequested ?? await DogList.GetAllAsync();
+            foreach (var item in x)
+            {
+                foreach (var sub in item)
+                {
+                    Console.WriteLine(sub);
+                }
+
+                Console.WriteLine();
+                Console.WriteLine("Different Dog");
+            }
+
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.ReadLine();
+
+            await Main();
+        }
+    }
+
+
     /// <summary>
     /// A single dog that has been requested.
     /// </summary>
-    public sealed class Dog : DogAPI<string>
+    public sealed class Dog : BaseApi<string>
     {
 
 
@@ -24,7 +49,7 @@ namespace RandomDog
         /// <returns></returns>
         public static async Task<Dog> FetchAsync(string breed = null, string subBreed = null)
         {
-            string _base = string.Empty;
+            string _base;
 
             bool breedVal = string.IsNullOrEmpty(breed);
             bool subBreedVal = string.IsNullOrEmpty(subBreed);
@@ -39,7 +64,7 @@ namespace RandomDog
             else
                 _base = $"https://dog.ceo/api/breed/{breed}/{subBreed}/images/random";
 
-            string json = await (await ApiRequester.RequestAPIAsync(_base, ApiRequester.RequestType.Get)).Content.ReadAsStringAsync();
+            string json = await (await ApiRequester.RequestAPIAsync(_base, RequestType.Get)).Content.ReadAsStringAsync();
 
             return JsonConvert.DeserializeObject<Dog>(json);
         }
