@@ -200,7 +200,7 @@ namespace RandomDog
             string json = await (await ApiRequester.RequestAPIAsync(req, RequestType.Get)).Content.ReadAsStringAsync();
 
             if (JsonError(json, out BadRequest request))
-                return new DogInfo() 
+                return new DogInfo()
                 {
                     Code = request.Code,
                     Message = new string[] { "No information provided" },

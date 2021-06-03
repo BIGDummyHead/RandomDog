@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace RandomDog
+﻿namespace RandomDog
 {
     /// <summary>
     /// Represents something that could have a bad request

@@ -10,7 +10,7 @@
     <Authors>BIGDummyHead</Authors>
     <RepositoryUrl>https://github.com/BIGDummyHead/RandomDog</RepositoryUrl>
     <Version>1.1.0.2</Version>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

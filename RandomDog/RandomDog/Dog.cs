@@ -1,39 +1,9 @@
-﻿using System;
-using Newtonsoft.Json;
-using System.Net;
+﻿using Newtonsoft.Json;
+using System;
 using System.Threading.Tasks;
-using Newtonsoft.Json.Linq;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace RandomDog
 {
-    class Program
-    {
-        static async Task Main()
-        {
-            var x = DogList.LastRequested ?? await DogList.GetAllAsync();
-            foreach (var item in x)
-            {
-                foreach (var sub in item)
-                {
-                    Console.WriteLine(sub);
-                }
-
-                Console.WriteLine();
-                Console.WriteLine("Different Dog");
-            }
-
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.ReadLine();
-
-            await Main();
-        }
-    }
-
-
     /// <summary>
     /// A single dog that has been requested.
     /// </summary>

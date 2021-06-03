@@ -1,7 +1,4 @@
-﻿using System.Threading.Tasks;
-using Newtonsoft.Json;
-
-namespace RandomDog
+﻿namespace RandomDog
 {
     /// <summary>
     /// The base for all Dog API request

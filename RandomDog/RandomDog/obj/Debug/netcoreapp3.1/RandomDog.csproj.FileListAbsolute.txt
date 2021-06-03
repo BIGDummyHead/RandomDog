@@ -17,9 +17,3 @@ C:\Users\shawn\Documents\GitHub\RandomDog\RandomDog\RandomDog\obj\Debug\netcorea
 C:\Users\shawn\Documents\GitHub\RandomDog\RandomDog\RandomDog\obj\Debug\netcoreapp3.1\RandomDog.dll
 C:\Users\shawn\Documents\GitHub\RandomDog\RandomDog\RandomDog\obj\Debug\netcoreapp3.1\RandomDog.pdb
 C:\Users\shawn\Documents\GitHub\RandomDog\RandomDog\RandomDog\bin\Debug\netcoreapp3.1\RandomDog.xml
-C:\Users\shawn\Documents\GitHub\RandomDog\RandomDog\RandomDog\bin\Debug\netcoreapp3.1\RandomDog.exe
-C:\Users\shawn\Documents\GitHub\RandomDog\RandomDog\RandomDog\bin\Debug\netcoreapp3.1\RandomDog.runtimeconfig.json
-C:\Users\shawn\Documents\GitHub\RandomDog\RandomDog\RandomDog\bin\Debug\netcoreapp3.1\RandomDog.runtimeconfig.dev.json
-C:\Users\shawn\Documents\GitHub\RandomDog\RandomDog\RandomDog\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
-C:\Users\shawn\Documents\GitHub\RandomDog\RandomDog\RandomDog\obj\Debug\netcoreapp3.1\RandomDog.csproj.CopyComplete
-C:\Users\shawn\Documents\GitHub\RandomDog\RandomDog\RandomDog\obj\Debug\netcoreapp3.1\RandomDog.genruntimeconfig.cache
